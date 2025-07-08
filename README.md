@@ -3,8 +3,11 @@ Este projeto implementa um sistema simples para gerenciamento de reservas e pedi
 Construído na disciplina de Programação Orientada a Objetos do Curso de Sistemas e Mídias Digitais da Universidade Federal do Ceará em 2025.
 
 ## Contribuidores
-- [Israel Coelho](https://github.com/IsraelCoeio)
-- [Wesley Barbosa](https://github.com/WesleyBarbosaMR)
+
+- [Israel Coelho](https://github.com/IsraelCoeio) <img src="https://github.com/IsraelCoeio.png" width="50" align="left">
+<br> <br> <br>
+- [Wesley Barbosa](https://github.com/WesleyBarbosaMR) <img src="https://github.com/WesleyBarbosaMR.png" width="50" align="left">
+<br> <br> <br>
 
 ## Funcionalidades deste sistema
 > Este projeto simula um sistema de reservas e pedidos em um restaurante, utilizando os conceitos de orientação a objetos, exemplificando especificamente **herança**, **classes abstratas**<!--, **interfaces**--> e **polimorfismo**.
