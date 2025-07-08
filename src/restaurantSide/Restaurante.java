@@ -8,7 +8,7 @@ import java.util.List;
 import booking.Reserva;
 import userSide.Usuario;
 
-public class Restaurante {
+public class Restaurante implements Avaliacao {
 
     private String nome;
     private String descricao;
@@ -21,6 +21,24 @@ public class Restaurante {
         this.nome = nome;
         this.descricao = descricao;
         this.quantidadeMesas = quantidadeMesas;
+    }
+    
+    @Override
+    public void addAvaliacao(int nota) {
+        this.avaliacoes.add(nota);
+    }
+
+    @Override
+    public double getAvaliacao() {
+        if (avaliacoes.isEmpty()) {
+            return 0.0; // Nenhuma avaliação
+        }
+
+        int soma = 0;
+        for (int nota : avaliacoes) {
+            soma += nota;
+        }
+        return (double) soma / avaliacoes.size();
     }
 
     public boolean mesaDisponivel(int indiceMesa, LocalDate data, LocalTime hora) {
@@ -55,20 +73,11 @@ public class Restaurante {
         }
     }
 
-    public void adicionarAvaliacao(int nota) {
-        this.avaliacoes.add(nota);
-    }
-
     public void exibirAvaliacoes() {
         if (avaliacoes.isEmpty()) {
             System.out.println("Ainda não há avaliações. Seja o primeiro a avaliar :)");
         } else {
-            int soma = 0;
-            for (int nota : avaliacoes) {
-                soma += nota;
-            }
-            double media = (double) soma / avaliacoes.size();
-            System.out.printf("Avaliação de %s: %.2f\n", nome, media);
+            System.out.printf("Avaliação de %s: %.2f\n", nome, getAvaliacao());
         }
     }
 

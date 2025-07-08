@@ -43,10 +43,16 @@ public class AplicativoReserva {
         // Avaliação
         restaurante.exibirAvaliacoes();
 
-        restaurante.adicionarAvaliacao(4);
+        restaurante.addAvaliacao(4);
         restaurante.exibirAvaliacoes();
 
-        restaurante.adicionarAvaliacao(5);
+        restaurante.addAvaliacao(5);
         restaurante.exibirAvaliacoes();
+        
+        restaurante.getCardapio().get(0).addAvaliacao(2);
+        restaurante.getCardapio().get(0).exibirAvaliacoes();
+
+        restaurante.getCardapio().get(0).addAvaliacao(4);
+        restaurante.getCardapio().get(0).exibirAvaliacoes();
     }
 }
