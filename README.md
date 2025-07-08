@@ -1,4 +1,4 @@
-# BookingApp - Java Application
+# BookingApp - Java Application <img src="BookingApp.png" width="135" align="left">
 Este projeto implementa um sistema simples para gerenciamento de reservas e pedidos em um restaurante.
 Construído na disciplina de Programação Orientada a Objetos do Curso de Sistemas e Mídias Digitais da Universidade Federal do Ceará em 2025.
 
