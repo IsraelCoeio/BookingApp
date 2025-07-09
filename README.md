@@ -119,7 +119,7 @@ Ela apenas define um método abstrato `preparar()`, visto acima, que deve ser im
 A interface `Avaliação` foi implementada para ser usada por várias classes para fornecer uma maneira de obter e manipular as avaliações.
 São definidos dois métodos: `adicionarAvaliacao()` para adicionar uma nota e `obterAvaliacao()` para calcular e retornar a média das avaliações (no caso de `Restaurante`) ou permitindo que cada prato tenha uma avaliação associada (no caso de `Prato`).
 
-**Exemplo (Avaliacao.java)[src/restaurantSide/Avaliacao.java]:**
+**Exemplo [Avaliacao.java](src/restaurantSide/Avaliacao.java)**
 
 ```java
 public interface Avaliacao {
@@ -127,7 +127,7 @@ public interface Avaliacao {
     double getAvaliacao();
 }
 ```
-**Restaurante.java)[src/restaurantSide/Restaurante.java]:**
+**[Restaurante.java](src/restaurantSide/Restaurante.java):**
 
 ```java
 public class Restaurante implements Avaliacao {
@@ -186,7 +186,7 @@ public class Restaurante implements Avaliacao {
 }
 ```
 
-**Prato.java)[src/restaurantSide/Prato.java]:**
+**[Prato.java](src/restaurantSide/Prato.java):**
 ```java
 public abstract class Prato implements Avaliacao {
     private String nome;
