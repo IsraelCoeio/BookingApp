@@ -20,7 +20,7 @@ Construído na disciplina de Programação Orientada a Objetos do Curso de Siste
 - Avaliação do restaurante.
 
 ### Diagrama de Classe
-<img src="Diagrama_BookingApp.png" width="total" align="center">
+
 
 ## Conceitos Demonstrados
 
