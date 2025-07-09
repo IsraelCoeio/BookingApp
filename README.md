@@ -19,6 +19,9 @@ Construído na disciplina de Programação Orientada a Objetos do Curso de Siste
 - Status de Preparação do pedido.
 - Avaliação do restaurante.
 
+### Diagrama de Classe
+<img src="Diagrama_BookingApp.png" width="total" align="center">
+
 ## Conceitos Demonstrados
 
 ### 1. Herança
