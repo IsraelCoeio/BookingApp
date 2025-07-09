@@ -10,7 +10,7 @@ Construído na disciplina de Programação Orientada a Objetos do Curso de Siste
 <br> <br> <br>
 
 ## Funcionalidades deste sistema
-> Este projeto simula um sistema de reservas e pedidos em um restaurante, utilizando os conceitos de orientação a objetos, exemplificando especificamente **herança**, **classes abstratas**<!--, **interfaces**--> e **polimorfismo**.
+> Este projeto simula um sistema de reservas e pedidos em um restaurante, utilizando os conceitos de orientação a objetos, exemplificando especificamente **herança**, **classes abstratas**, **interfaces** e **polimorfismo**.
 > O programa irá simular o funcionamento de um restaurante, permitindo realizar reservas, adicionar pratos ao pedido, e visualizar avaliações.
 
 - Cadastro de pratos no restaurante.
@@ -115,10 +115,119 @@ Ela apenas define um método abstrato `preparar()`, visto acima, que deve ser im
     }
 ```
 
-<!-- ### 3. Interfaces (Alterar o próximo tópico para 4 quando add)-->
+### 3. Interfaces
+A interface `Avaliação` foi implementada para ser usada por várias classes para fornecer uma maneira de obter e manipular as avaliações.
+São definidos dois métodos: `adicionarAvaliacao()` para adicionar uma nota e `obterAvaliacao()` para calcular e retornar a média das avaliações (no caso de `Restaurante`) ou permitindo que cada prato tenha uma avaliação associada (no caso de `Prato`).
 
+**Exemplo (Avaliacao.java)[src/restaurantSide/Avaliacao.java]:**
 
-### 3. Polimorfismo
+```java
+public interface Avaliacao {
+	void addAvaliacao(int nota);
+    double getAvaliacao();
+}
+```
+**Restaurante.java)[src/restaurantSide/Restaurante.java]:**
+
+```java
+public class Restaurante implements Avaliacao {
+
+    private String nome;
+    private String descricao;
+    private List<Prato> cardapio = new ArrayList<>();
+    private List<Integer> avaliacoes = new ArrayList<>();
+    private int quantidadeMesas;
+    private List<Reserva> reservas = new ArrayList<>();
+
+    public Restaurante(String nome, String descricao, int quantidadeMesas) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.quantidadeMesas = quantidadeMesas;
+    }
+    
+    @Override
+    public void addAvaliacao(int nota) {
+        this.avaliacoes.add(nota);
+    }
+
+    @Override
+    public double getAvaliacao() {
+        if (avaliacoes.isEmpty()) {
+            return 0.0; // Nenhuma avaliação
+        }
+
+        int soma = 0;
+        for (int nota : avaliacoes) {
+            soma += nota;
+        }
+        return (double) soma / avaliacoes.size();
+    }
+
+    ...
+
+    public void exibirAvaliacoes() {
+        if (avaliacoes.isEmpty()) {
+            System.out.println("Ainda não há avaliações. Seja o primeiro a avaliar :)");
+        } else {
+            System.out.printf("Avaliação de %s: %.2f\n", nome, getAvaliacao());
+        }
+    }
+
+    ...
+
+    // Getters e Setters
+
+    ...
+
+    public List<Integer> getAvaliacoes() {
+        return avaliacoes;
+    }
+    ...
+}
+```
+
+**Prato.java)[src/restaurantSide/Prato.java]:**
+```java
+public abstract class Prato implements Avaliacao {
+    private String nome;
+    private double preco;
+	private List<Integer> avaliacoes = new ArrayList<>();
+
+    public Prato(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+    
+    @Override
+    public void addAvaliacao(int nota) {
+        this.avaliacoes.add(nota);
+    }
+
+    @Override
+    public double getAvaliacao() {
+        if (avaliacoes.isEmpty()) {
+            return 0.0; // Nenhuma avaliação
+        }
+
+        int soma = 0;
+        for (int nota : avaliacoes) {
+            soma += nota;
+        }
+        return (double) soma / avaliacoes.size();
+    }
+    
+    public void exibirAvaliacoes() {
+        if (avaliacoes.isEmpty()) {
+            System.out.println("Ainda não há avaliações. Seja o primeiro a avaliar :)");
+        } else {
+            System.out.printf("Avaliação de %s: %.2f\n", nome, getAvaliacao());
+        }
+    }
+    ...
+}
+```
+
+### 4. Polimorfismo
 
 O polimorfismo também pode ser exemplificado no uso do método `preparar()`, que é chamado tanto para objetos do tipo `Sushi` quanto `Lamen`, mas o comportamento de preparação será diferente, dependendo do tipo do prato.
 Ou seja, o método `preparar()` será chamado para cada objeto `Prato` presente no pedido do usuário, e, dependendo do tipo do prato (Sushi ou Lamen), o comportamento de preparação será diferente.
